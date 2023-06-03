@@ -8,12 +8,15 @@ domain
 - Perform cell averaged CFAR-based detection of target parameters (amplitude,
 range, and Doppler)
 - Repeat the above exercises for Doppler resilient Golay sequences
+
 ❖ Methodology
+
 ➢ Transmitted and Received Signals
 For the Golay transmitted signal, 512 samples of Golay sequence in 1 PRI have
 been taken. The signal is then zero-padded to have a duty cycle of 50%, resulting
 in 1024 samples in 1 PRI. For the received signal, the transmitted signal is shifted
 according to the number of samples corresponding to the time delay.
+
 ➢ Range Estimation
 We know that, td (time delay) = 2rtgt / c (where rtgt = range of target)
 Given, dt = 1/BW
@@ -26,6 +29,7 @@ frequency domain. Firstly, the received and transmitted signals are converted fr
 time to frequency domain, using the Fast Fourier Transform fft function. Then the
 received signal is multiplied to the conjugate of the transmitted signal. Finally,
 Inverse Fast Fourier Transform is performed using the ifft function.
+
 ➢ 2D Range Doppler Processing
 For 2D Range Doppler Processing, the considered signal is a 2D array having M
 rows and N columns, in our case M = 1024 and N = 2048. The number of columns
@@ -39,6 +43,7 @@ multiplying each column with e
 j2π.fd.xTpri where fd is the doppler frequency
 corresponding to the target's velocity, and x representing the column number
 starting from 0 to N-1.
+
 ➢ 2D Range Doppler For single target
 2D Range Doppler processing is performed by doing Matched filtering across
 rows in a column and doing Doppler Processing across columns in a row. Doppler
@@ -47,6 +52,7 @@ Matched filtering, if the input arguments consist of n samples, we get 2n-1 samp
 in the output. We also know that for FFT, if the input argument consists of n
 samples, we get n samples in the output. Thus, the dimensions after 2D Range
 Doppler processing were 2047 x 2048.
+
 ➢ 2D Range Doppler For Multiple targets
 For 2D Range Doppler for multiple targets, we first fixed the target ranges, and
 velocities, like for 3 targets we made two array of target ranges and velocities and
@@ -55,6 +61,7 @@ doppler map for each target, we are superimposing(adding) the each 2d range
 doppler map to a matrix initialized to the same dimension and set to zero initially.
 Then Finally after the loop we are using imagesc to plot the superimposed 2d
 range doppler map.
+
 ➢ CFAR
 For CFAR, we first formed the CFARDetector2D object using a phased toolbox
 command, with parameters such as Training Band Size = [5,4], Guard Band Size =
