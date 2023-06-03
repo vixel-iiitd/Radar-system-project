@@ -42,11 +42,7 @@ Inverse Fast Fourier Transform is performed using the ifft function.
 For 2D Range Doppler Processing, the considered signal is a 2D array having M
 rows and N columns, in our case M = 1024 and N = 2048. The number of columns
 N represents the number of PRI in one CPI, also known as the slow time samples.
-The number of rows M represents the fast time samples in 1 PRI.
-
-Radar System Project 1
-
-Range delay and doppler delay are computed to construct the received signal.
+The number of rows M represents the fast time samples in 1 PRI. Range delay and doppler delay are computed to construct the received signal.
 Range delay is incorporated by shifting the signal according to the number of
 samples corresponding to the time delay. Doppler delay is incorporated by
 multiplying each column with e
